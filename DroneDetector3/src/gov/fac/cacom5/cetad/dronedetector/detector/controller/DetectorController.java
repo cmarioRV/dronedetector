@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Observable;
@@ -30,6 +31,7 @@ import gov.fac.cacom5.cetad.dronedetector.detector.model.CalculationQueue;
 import gov.fac.cacom5.cetad.dronedetector.detector.model.DecisionQueue;
 import gov.fac.cacom5.cetad.dronedetector.detector.model.LPCParameters;
 import gov.fac.cacom5.cetad.dronedetector.detector.view.DetectorPanel;
+import gov.fac.cacom5.cetad.dronedetector.model.EmailSender;
 import gov.fac.cacom5.cetad.dronedetector.model.Estimator;
 
 public class DetectorController implements Observer {
@@ -44,6 +46,7 @@ public class DetectorController implements Observer {
 	MainController mainController;
 	DetectorPanel detectorPanel;
 	DataAcquisitionController audioController;
+	EmailController emailController;
 	//LPCController lpcController;
 	Estimator estimator;
 	
@@ -61,6 +64,7 @@ public class DetectorController implements Observer {
 	public DetectorController(MainController pMainController, DatabaseManager pDatabaseManager) {
 		this.mainController = pMainController;
 		this.calculationController = new CalculationController(pMainController.getLPCParameters());
+		this.emailController = new EmailController();
 		
 		this.databaseManager = pDatabaseManager;
 		
@@ -105,6 +109,8 @@ public class DetectorController implements Observer {
 			
 			//Inform to MainController that Detector is running
 			mainController.detectionStarted();
+			
+			emailController.start();
 			setStatus(RUNNING);
 			
 		} catch (LineUnavailableException e) {
@@ -143,6 +149,7 @@ public class DetectorController implements Observer {
 		mainController.detectionStopping();
 		calculationController.stop();
 		audioController.stopCapture();
+		emailController.stop();
 	}
 	
 	public void lineIsClosed()
@@ -210,16 +217,14 @@ public class DetectorController implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		String adf = Thread.currentThread().getName();
 		if(o.getClass().equals(CalculationQueue.class))
 		{
-			//calculationController.newMatch(getName((int)arg));
 			calculationController.newMatch((String)arg);
 		}
 		else if(o.getClass().equals(DecisionQueue.class))
 		{
-			//detectorPanel.showAlert(getName((int)arg));
 			detectorPanel.showAlert((String)arg);
+			emailController.newMatch((String)arg);
 		}
 	}
 	
