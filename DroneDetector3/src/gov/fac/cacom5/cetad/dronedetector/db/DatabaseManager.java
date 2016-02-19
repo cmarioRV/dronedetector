@@ -28,7 +28,9 @@ public class DatabaseManager extends Observable {
 			if(connection == null)
 			{
 				Class.forName("org.sqlite.JDBC");
-				connection = DriverManager.getConnection("jdbc:sqlite:coefficients.sqlite");
+				//connection = DriverManager.getConnection("jdbc:sqlite:coefficients.sqlite");
+				connection = DriverManager.getConnection("jdbc:sqlite::resource:coefficients.sqlite");
+				
 				stmt = connection.createStatement();
 			}
 			else if(connection.isClosed())
