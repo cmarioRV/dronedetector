@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 
 import gov.fac.cacom5.cetad.dronedetector.addsample.controller.AddSampleController;
 import gov.fac.cacom5.cetad.dronedetector.configuration.controller.ConfigurationController;
+import gov.fac.cacom5.cetad.dronedetector.configuration.model.ConfigurationParameters;
 import gov.fac.cacom5.cetad.dronedetector.db.DatabaseManager;
 import gov.fac.cacom5.cetad.dronedetector.deletesample.controller.DeleteSampleController;
 import gov.fac.cacom5.cetad.dronedetector.detector.controller.DetectorController;
@@ -161,6 +162,11 @@ public class MainController {
 	public LPCParameters getLPCParameters()
 	{
 		return (LPCParameters)configurationController.getConfigurationParameters();
+	}	
+	
+	public ConfigurationParameters getConfigurationParameters()
+	{
+		return configurationController.getConfigurationParameters();
 	}	
 	
 	public FileInfo getFileInfo(File file) throws UnsupportedAudioFileException, IOException

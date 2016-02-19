@@ -54,7 +54,6 @@ public class DetectorController implements Observer {
 	public DetectorController(MainController pMainController, DatabaseManager pDatabaseManager) {
 		this.mainController = pMainController;
 		this.calculationController = new CalculationController(pMainController.getLPCParameters());
-		this.emailController = new EmailController();
 		
 		this.databaseManager = pDatabaseManager;
 		
@@ -100,6 +99,7 @@ public class DetectorController implements Observer {
 			//Inform to MainController that Detector is running
 			mainController.detectionStarted();
 			
+			this.emailController = new EmailController(mainController.getConfigurationParameters().getEmail());
 			emailController.start();
 			setStatus(RUNNING);
 			

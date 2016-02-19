@@ -12,7 +12,7 @@ public class MainFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public MainFrame() {
-		setSize(550, 339);
+		setSize(600, 339);
 		setTitle("Drone Detector");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setBackground(Color.DARK_GRAY);

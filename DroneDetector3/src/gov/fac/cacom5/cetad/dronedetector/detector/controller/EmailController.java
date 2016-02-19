@@ -12,14 +12,16 @@ import gov.fac.cacom5.cetad.dronedetector.model.EmailSender;
 public class EmailController {
 	Date offsetDate;
 	Hashtable<String, Date> datesTable;
+	String[] emailArray;
 	static final long offsetSecondsInMillis = 60000; //60 seconds
 	Calendar date;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	ThreadPoolExecutor executor;
 	
-	public EmailController() {
+	public EmailController(String pEmail) {
 		executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(1);
 		datesTable = new Hashtable<>();
+		emailArray = pEmail.split(",");
 	}
 	
 	public void newMatch(String drone)
@@ -80,11 +82,11 @@ public class EmailController {
 		
 		@Override
 		public void run() {
-			String[] to = {"mariomad18@gmail.com"};
+			//String[] to = {"mariomad18@gmail.com"};
 			Date now = new Date();
 			String message = "Un posible drone fue detectado el " + sdf.format(now) + "\n\n" + "Del tipo:" + "\n" + drone + 
 					"\n\n\n\n\n" + "DroneDetector\n" + "Fuerza Aérea Colombiana\n" + "CACOM5\n" + "CETAD\n" + "cetad@cetad.co";
-			EmailSender.send("crua@cetad.co", to, "CETAd2012*", "Posible Drone detectado!", message);
+			EmailSender.send("crua@cetad.co", emailArray, "CETAd2012*", "Posible Drone detectado!", message);
 		}
 	}
 }

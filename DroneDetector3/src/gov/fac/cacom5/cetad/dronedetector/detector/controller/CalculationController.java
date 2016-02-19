@@ -62,7 +62,7 @@ public class CalculationController {
 		{
 			Future<double[]> result = executor.submit(new FileInfoJob(file, parameters));
 			
-			for (double iterable_element : result.get()) System.out.print(String.format("%f ", iterable_element));
+			//for (double iterable_element : result.get()) System.out.print(String.format("%f ", iterable_element));
 			
 			return result.get();
 		}
