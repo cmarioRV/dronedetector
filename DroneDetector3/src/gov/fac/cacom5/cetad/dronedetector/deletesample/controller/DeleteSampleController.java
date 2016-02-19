@@ -2,14 +2,12 @@ package gov.fac.cacom5.cetad.dronedetector.deletesample.controller;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 import gov.fac.cacom5.cetad.dronedetector.MainController;

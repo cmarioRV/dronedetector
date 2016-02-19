@@ -4,11 +4,14 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-import javax.swing.JComponent;
 import javax.swing.JMenu;
 
 public class FACJMenu extends JMenu {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Color color = Color.GRAY;
 	
 	public FACJMenu(String title) {

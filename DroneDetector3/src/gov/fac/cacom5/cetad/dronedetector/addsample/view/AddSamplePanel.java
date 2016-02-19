@@ -8,17 +8,14 @@ import javax.sound.sampled.AudioFormat;
 import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JSplitPane;
 
 import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 import javax.swing.JTextField;
 import javax.swing.BoxLayout;
-import javax.swing.border.BevelBorder;
 import java.awt.FlowLayout;
 import javax.swing.Box;
 import java.awt.Component;
@@ -27,6 +24,10 @@ import java.awt.SystemColor;
 
 public class AddSamplePanel extends JPanel {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JButton btnAccept;
 	JButton btnCancel;
 	JButton btnOpenFile;
@@ -178,7 +179,6 @@ public class AddSamplePanel extends JPanel {
 		rightVerticalBox.add(channels);
 		
 		panelDataSouth = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) panelDataSouth.getLayout();
 		panelDataSouth.setBackground(SystemColor.inactiveCaptionText);
 		panelData.add(panelDataSouth, BorderLayout.SOUTH);
 		

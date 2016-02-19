@@ -17,6 +17,7 @@ import java.util.Vector;
  * Extracts the sample values from speech signals stored in WAV format
  * @author Krishna Brahmam
  */
+@SuppressWarnings({"rawtypes","unchecked","unused"})
 public class Wav2TextConverter {
     
     private BufferedInputStream bfread;
@@ -25,7 +26,7 @@ public class Wav2TextConverter {
     private byte[] buffer;
     private int temp;
     private int interval = 160;
-    private Vector x;
+	private Vector x;
     private Vector startMark;
     private Vector endMark;
     private double normalizationFactor = 15000;
@@ -72,7 +73,8 @@ public class Wav2TextConverter {
      * eight bits(removing the sign bit). The 16-bit data value is constructed by 
      * shifting the higher byte by 8 bits and then ORing with the lower byte.
      */
-    private void printData(){
+
+	private void printData(){
         try {
             while (bfread.read(buffer) >= 0) {
                 temp = 0;

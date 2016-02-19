@@ -1,6 +1,5 @@
 package gov.fac.cacom5.cetad.dronedetector.detector.controller;
 
-import java.nio.ByteBuffer;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -50,7 +49,10 @@ public class DataAcquisitionController {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} finally {
-			audioCapture.closeLine();
+			if(audioCapture != null)
+			{
+				audioCapture.closeLine();
+			}
 		}
 	}
 

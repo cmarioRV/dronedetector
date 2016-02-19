@@ -8,7 +8,6 @@ import java.util.concurrent.Semaphore;
 public class DecisionQueue extends Observable {
 
 	private final Semaphore semaphore;
-	private int matchCounter = 0;
 	private int matchNumberThreshold;
 	private Hashtable<String, Integer> count;
 	

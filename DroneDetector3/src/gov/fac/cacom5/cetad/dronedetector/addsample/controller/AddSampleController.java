@@ -2,37 +2,23 @@ package gov.fac.cacom5.cetad.dronedetector.addsample.controller;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.xml.crypto.Data;
 
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
-import gov.fac.cacom5.cetad.dronedetector.Main;
 import gov.fac.cacom5.cetad.dronedetector.MainController;
 import gov.fac.cacom5.cetad.dronedetector.addsample.model.AudioFilter;
 import gov.fac.cacom5.cetad.dronedetector.addsample.view.AddSamplePanel;
-import gov.fac.cacom5.cetad.dronedetector.addsample.view.CoefficientsChartPanel;
 import gov.fac.cacom5.cetad.dronedetector.db.DatabaseManager;
 import gov.fac.cacom5.cetad.dronedetector.model.FileInfo;
-import gov.fac.cacom5.cetad.dronedetector.utils.Wav2TextConverter;
 
 public class AddSampleController extends Observable implements Observer {
 	
@@ -88,6 +74,11 @@ public class AddSampleController extends Observable implements Observer {
 	
 	class AcceptAction extends AbstractAction
 	{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public AcceptAction(String text, ImageIcon icon, String desc, Integer mnemonic) {
 			super(text, icon);
 			putValue(SHORT_DESCRIPTION, desc);
@@ -120,6 +111,11 @@ public class AddSampleController extends Observable implements Observer {
 	
 	class CancelAction extends AbstractAction
 	{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public CancelAction(String text, ImageIcon icon, String desc, Integer mnemonic) {
 			super(text, icon);
 			putValue(SHORT_DESCRIPTION, desc);
@@ -135,6 +131,11 @@ public class AddSampleController extends Observable implements Observer {
 	
 	class OpenFileAction extends AbstractAction
 	{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		public OpenFileAction(String text, ImageIcon icon, String desc, Integer mnemonic) {
 			super(text, icon);
 			putValue(SHORT_DESCRIPTION, desc);

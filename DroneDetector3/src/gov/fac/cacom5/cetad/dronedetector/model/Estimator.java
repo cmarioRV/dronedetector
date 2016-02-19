@@ -1,6 +1,5 @@
 package gov.fac.cacom5.cetad.dronedetector.model;
 
-import java.security.IdentityScope;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Observable;
@@ -22,7 +21,6 @@ public class Estimator{
 	CalculationQueue calculationQueue;
 	DetectDrone detectDrone;
 	private Hashtable<Integer, Vector<Double>> correlations;
-	private Integer[] ids;
 	private final Semaphore semaphore;
 	
 	public Estimator(DetectorController pParentController, Integer[] pIds, ArrayList<double[]> pListOfDroneData, double pThreshold) {
@@ -30,7 +28,6 @@ public class Estimator{
 		executor = (ThreadPoolExecutor)Executors.newFixedThreadPool(2);
 		correlations = new Hashtable<Integer, Vector<Double>>();
 		calculationQueue = new CalculationQueue(pListOfDroneData);
-		ids = pIds;
 		detectDrone = new DetectDrone(pThreshold);
 		detectDrone.addObserver(pParentController);
 		scheduledExecutor = new ScheduledThreadPoolExecutor(1);
@@ -225,12 +222,7 @@ public class Estimator{
 				}
 
 				sum = sum / vector.size();
-				
-				if(Double.isNaN(sum))
-				{
-					String fString = "dsfas";
-				}
-				
+
 				if(sum > threshold)
 				{
 					//int response = i; 

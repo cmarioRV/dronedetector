@@ -14,11 +14,13 @@ import javax.swing.Box;
 import java.awt.Component;
 import javax.swing.BoxLayout;
 import java.awt.FlowLayout;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.CompoundBorder;
 import javax.swing.border.EtchedBorder;
 
 public class ConfigurationPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField txtP;
 	private JTextField txtN;
 	private JTextField txtM;
@@ -136,7 +138,6 @@ public class ConfigurationPanel extends JPanel {
 		verticalBox.add(lblmatchNumber);
 		
 		JPanel panel_1 = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
 		panel_1.setBackground(Color.DARK_GRAY);
 		panelCenterWest.add(panel_1, BorderLayout.EAST);
 		

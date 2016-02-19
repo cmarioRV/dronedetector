@@ -12,24 +12,15 @@ import java.util.Arrays;
 import java.util.Vector;
 import java.util.concurrent.Callable;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
-import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
-
 import gov.fac.cacom5.cetad.dronedetector.utils.Wav2TextConverter;
 
 public class FileInfoJob implements Callable<double[]> {
 
-	private File file;
 	private Wav2TextConverter wav2TextConverter;
 
-	private byte[] data;
 	private double[] coefficientsAverage;
     private ArrayList<double[]> coefficientsArray;
 	
-	private String input;
     private int p;
     private double[] e;         
     private double[][] alpha;
@@ -37,7 +28,6 @@ public class FileInfoJob implements Callable<double[]> {
     private double[] k;         // PARCOR coefficients
     private double[] c;         // Cepstral coefficients
     private Vector<Double> s;
-    private Vector in;
     
     private double[] x;
     private double[] lpc;       // LP coefficients
@@ -49,10 +39,10 @@ public class FileInfoJob implements Callable<double[]> {
     private LPCParameters parameters;
 	
 	public FileInfoJob(File file, LPCParameters parameters) throws IOException {
-		this.file = file;
 		this.wav2TextConverter = new Wav2TextConverter(file.getAbsolutePath(), "resources/outputWav2Text.txt");
 		this.parameters = parameters;
 	}
+	
 	@Override
 	public double[] call() throws Exception {
 		this.wav2TextConverter.convert();
@@ -62,25 +52,6 @@ public class FileInfoJob implements Callable<double[]> {
 		bfwr.close();
 		calculateAverage();
 		return Arrays.copyOfRange(coefficientsAverage, 1, coefficientsAverage.length);
-	}
-	
-	private void readFile()
-	{
-		try 
-		{
-			AudioInputStream ais = null;
-    		ais = AudioSystem.getAudioInputStream(file);
-            data = new byte[ais.available()];
-            ais.read(data);
-            
-        	for (double b : data) {
-    			s.addElement(b);
-    		}
-		} catch (ArrayIndexOutOfBoundsException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 	
 	/**
@@ -102,8 +73,7 @@ public class FileInfoJob implements Callable<double[]> {
         r = new double[p+1];
         k = new double[p+1];
         c = new double[p+1];
-        s = new Vector();
-        in = new Vector();
+        s = new Vector<Double>();
         
         x = new double[N];
         lpc = new double[p];
@@ -131,6 +101,7 @@ public class FileInfoJob implements Callable<double[]> {
             temp = bfr.readLine();
             s.addElement(Double.parseDouble(temp));
         }
+        bfr.close();
     }
     
     /**
@@ -262,7 +233,6 @@ public class FileInfoJob implements Callable<double[]> {
 			}
 		}
     	
-    	int adfa = coefficientsArray.size();
     	for (int i = 0; i < coefficientsAverage.length; i++) {
     		coefficientsAverage[i] = coefficientsAverage[i] / (coefficientsArray.size() + 1);
 		}
@@ -273,7 +243,8 @@ public class FileInfoJob implements Callable<double[]> {
     /**
      * Writes or records the linear predicitve cepstral coefficients
      */
-    private void writeResult(){
+    @SuppressWarnings("unused")
+	private void writeResult(){
         try {
             for (int i = 1; i < c.length; i++) {
                 bfwr.write(String.format("%f ", c[i]));

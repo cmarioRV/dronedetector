@@ -14,20 +14,18 @@ import java.awt.Font;
 import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 import java.awt.Component;
-import java.awt.Dimension;
 
 import javax.swing.Box;
 import javax.swing.border.EtchedBorder;
-import java.awt.GridLayout;
-import java.awt.CardLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
 
 public class DetectorPanel extends JPanel {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JButton btnIniciar;
 	public JPanel panelCenter;
 	private JPanel panel;

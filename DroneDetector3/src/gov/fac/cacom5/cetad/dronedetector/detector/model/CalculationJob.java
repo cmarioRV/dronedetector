@@ -6,19 +6,14 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.DoubleBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Locale;
 import java.util.Vector;
 import java.util.concurrent.Callable;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
-
-import gov.fac.cacom5.cetad.dronedetector.math.FIRFilter;
 
 public class CalculationJob implements Callable<double[]>
 {	
@@ -36,25 +31,24 @@ public class CalculationJob implements Callable<double[]>
     private double[] k;         // PARCOR coefficients
     private double[] c;         // Cepstral coefficients
     private Vector<Double> s;
-    private Vector in;
+    //private Vector in;
     
     private double[] x;
     private double[] lpc;       // LP coefficients
     private int N;              // The length of a frame
     private int M;
     
-    private Vector rawInput;
+    //private Vector rawInput;
+    private Vector<Double> rawInput;
     private double normalizationFactor = 15000;
     
     private LPCParameters parameters;
-    private BandpassFilter bandpassFilter;
 	
 	public CalculationJob(byte[] data, CalculationQueue queue, LPCParameters parameters) {
 		this.calculationQueue = queue;
 		this.data  = data;
 		this.parameters = parameters;
-		rawInput = new Vector();
-		bandpassFilter = new BandpassFilter();
+		rawInput = new Vector<Double>();
 	}
 
 	@Override
@@ -107,12 +101,7 @@ public class CalculationJob implements Callable<double[]>
 		
 		return null;
 	}
-	
-	private void start()
-	{
-		for (double d : data) rawInput.addElement(new Double(d));
-	}
-	
+
 	/*
 	private void start()
 	{	
@@ -155,8 +144,7 @@ public class CalculationJob implements Callable<double[]>
      */
     private void preProcess(){
         double dc = 0;
-        double Emin = 0;
-        
+
         // Perform DC Shift
         for(int i=0;i<rawInput.size();i++)
             dc += ((Double) rawInput.elementAt(i)).doubleValue();
@@ -211,7 +199,7 @@ public class CalculationJob implements Callable<double[]>
         c = new double[p+1];
         //s = new Vector();
         s = rawInput;
-        in = new Vector();
+        //in = new Vector();
         
         x = new double[N];
         lpc = new double[p];
@@ -253,6 +241,8 @@ public class CalculationJob implements Callable<double[]>
                 temp = bfr.readLine();
                 s.addElement(Double.parseDouble(temp));
             }
+            
+            bfr.close();
     	}
     	else throw new IOException("No ha establecido los datos a procesar");
     }
@@ -422,7 +412,6 @@ public class CalculationJob implements Callable<double[]>
 			}
 		}
     	
-    	int adfa = coefficientsArray.size();
     	for (int i = 0; i < coefficientsAverage.length; i++) {
     		coefficientsAverage[i] = coefficientsAverage[i] / (coefficientsArray.size() + 1);
 		}

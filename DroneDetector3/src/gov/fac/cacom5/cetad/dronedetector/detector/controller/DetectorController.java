@@ -7,18 +7,11 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeoutException;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.swing.AbstractAction;
@@ -31,7 +24,6 @@ import gov.fac.cacom5.cetad.dronedetector.detector.model.CalculationQueue;
 import gov.fac.cacom5.cetad.dronedetector.detector.model.DecisionQueue;
 import gov.fac.cacom5.cetad.dronedetector.detector.model.LPCParameters;
 import gov.fac.cacom5.cetad.dronedetector.detector.view.DetectorPanel;
-import gov.fac.cacom5.cetad.dronedetector.model.EmailSender;
 import gov.fac.cacom5.cetad.dronedetector.model.Estimator;
 
 public class DetectorController implements Observer {
@@ -40,9 +32,7 @@ public class DetectorController implements Observer {
 	private static final int STARTING = 1;
 	private static final int RUNNING = 2;
 	private static final int STOPPING = 3;
-	
-	private final Date lastDateAlertShowed = new Date(0);
-	
+
 	MainController mainController;
 	DetectorPanel detectorPanel;
 	DataAcquisitionController audioController;
@@ -118,24 +108,28 @@ public class DetectorController implements Observer {
 			JOptionPane.showMessageDialog(detectorPanel, "Dispositivo de entrada no detectado", "Error", JOptionPane.ERROR_MESSAGE);
 			mainController.detectionStopped();
 			startDetectorAction.setEnabled(true);
+			calculationController.stop();
 			setStatus(STOPPED);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(detectorPanel, "Error de base de datos", "Error", JOptionPane.ERROR_MESSAGE);
 			mainController.detectionStopped();
 			startDetectorAction.setEnabled(true);
+			calculationController.stop();
 			setStatus(STOPPED);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(detectorPanel, "No existen muestras almacenadas", "Error", JOptionPane.ERROR_MESSAGE);
 			mainController.detectionStopped();
 			startDetectorAction.setEnabled(true);
+			calculationController.stop();
 			setStatus(STOPPED);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(detectorPanel, "Error de base de datos", "Error", JOptionPane.ERROR_MESSAGE);
 			mainController.detectionStopped();
 			startDetectorAction.setEnabled(true);
+			calculationController.stop();
 			setStatus(STOPPED);
 		} finally {
 			startDetectorAction.setEnabled(true);
@@ -264,21 +258,5 @@ public class DetectorController implements Observer {
 		default:
 			break;
 		}
-	}
-	
-	private String getName(int pId)
-	{
-		String results = null;
-		try {
-			databaseManager.init();
-			results = databaseManager.getName(pId);
-			databaseManager.close();
-		} catch (ClassNotFoundException e1) {
-			e1.printStackTrace();
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
-		
-		return results;
 	}
 }

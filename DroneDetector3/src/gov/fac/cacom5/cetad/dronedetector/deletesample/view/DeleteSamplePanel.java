@@ -2,15 +2,11 @@ package gov.fac.cacom5.cetad.dronedetector.deletesample.view;
 
 import javax.swing.JPanel;
 
-import org.jfree.data.category.DefaultCategoryDataset;
-
 import java.awt.Color;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.event.ActionListener;
 
-import javax.sound.sampled.AudioFormat;
 import javax.swing.Action;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
@@ -20,8 +16,12 @@ import java.awt.Component;
 
 public class DeleteSamplePanel extends JPanel {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//DefaultCategoryDataset dataset;
-	JComboBox comboBox;
+	JComboBox<String> comboBox;
 	JButton btnDelete;
 	JButton btnCancel;
 	
@@ -58,7 +58,7 @@ public class DeleteSamplePanel extends JPanel {
 		Component verticalStrut_1 = Box.createVerticalStrut(5);
 		verticalBox.add(verticalStrut_1);
 		
-		comboBox = new JComboBox();
+		comboBox = new JComboBox<String>();
 		comboBox.setForeground(Color.BLACK);
 		verticalBox.add(comboBox);
 		comboBox.setBackground(Color.LIGHT_GRAY);

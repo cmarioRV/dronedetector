@@ -1,7 +1,5 @@
 package gov.fac.cacom5.cetad.dronedetector.detector.model;
 
-import gov.fac.cacom5.cetad.dronedetector.math.FIRFilter;
-
 public class BandpassFilter
 {
 	private static int length = 0;
@@ -40,7 +38,7 @@ public class BandpassFilter
 	};
 	
 	public BandpassFilter(double[] coeffs) {
-		this.coefficients = coeffs;
+		coefficients = coeffs;
 	}
 
 	public BandpassFilter() {

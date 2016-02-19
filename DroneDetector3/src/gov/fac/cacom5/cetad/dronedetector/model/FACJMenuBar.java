@@ -8,6 +8,10 @@ import javax.swing.JMenuBar;
 
 public class FACJMenuBar extends JMenuBar {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Color color = Color.DARK_GRAY;
 	
 	public FACJMenuBar() {

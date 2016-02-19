@@ -61,7 +61,6 @@ public class DatabaseManager extends Observable {
 	public Hashtable<String, double[]> getDBData() throws SQLException 
 	{
 		ArrayList<double[]> coeffsArray = new ArrayList<double[]>();
-		ArrayList<String> coeffsArrayString = new ArrayList<String>();
 		Hashtable<String, double[]> hashtable = new Hashtable<String, double[]>();
 		ArrayList<String> namesArray = new ArrayList<String>();
 		

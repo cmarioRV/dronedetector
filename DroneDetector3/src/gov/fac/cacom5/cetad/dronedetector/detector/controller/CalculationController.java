@@ -2,7 +2,6 @@ package gov.fac.cacom5.cetad.dronedetector.detector.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
@@ -16,10 +15,8 @@ import gov.fac.cacom5.cetad.dronedetector.detector.model.DecisionJob;
 import gov.fac.cacom5.cetad.dronedetector.detector.model.DecisionQueue;
 import gov.fac.cacom5.cetad.dronedetector.detector.model.DetectionJob;
 import gov.fac.cacom5.cetad.dronedetector.detector.model.FileInfoJob;
-import gov.fac.cacom5.cetad.dronedetector.detector.model.BandpassFilter;
 import gov.fac.cacom5.cetad.dronedetector.detector.model.CalculationJob;
 import gov.fac.cacom5.cetad.dronedetector.detector.model.LPCParameters;
-import gov.fac.cacom5.cetad.dronedetector.model.FileInfo;
 
 public class CalculationController {
 
@@ -28,18 +25,6 @@ public class CalculationController {
 	LPCParameters parameters;
 	ThreadPoolExecutor executor;
 	ScheduledThreadPoolExecutor scheduledExecutor;
-	
-	public CalculationController(DetectorController pParentController, LPCParameters pParameters, ArrayList<double[]> dronesArray) {
-		this.parameters = pParameters;
-		executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(5);
-		scheduledExecutor = new ScheduledThreadPoolExecutor(2);
-		calculationQueue = new CalculationQueue(dronesArray, pParameters.getOffset());
-		calculationQueue.addObserver(pParentController);
-		decisionQueue = new DecisionQueue(pParameters.getMatchNumber());
-		decisionQueue.addObserver(pParentController);
-		scheduledExecutor.scheduleAtFixedRate(new DetectionJob(calculationQueue, this.parameters.getThreshold()), 1000, 250, TimeUnit.MILLISECONDS);
-		scheduledExecutor.scheduleAtFixedRate(new DecisionJob(decisionQueue), 1500, 1000, TimeUnit.MILLISECONDS);
-	}
 	
 	public CalculationController(DetectorController pParentController, LPCParameters pParameters, Hashtable<String, double[]> dronesArray) {
 		this.parameters = pParameters;
@@ -57,7 +42,7 @@ public class CalculationController {
 	{
 		if(executor == null) executor  = (ThreadPoolExecutor) Executors.newFixedThreadPool(5);
 		if(scheduledExecutor == null) scheduledExecutor = new ScheduledThreadPoolExecutor(1);
-		this.parameters = parameters;
+		this.parameters = pParameters;
 	}
 	/*
 	public void start()
