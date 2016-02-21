@@ -4,6 +4,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -73,6 +74,8 @@ public class MainController {
 		layeredPane = new JLayeredPane();
 		cardLayout = new CardLayout();
 		layeredPane.setLayout(cardLayout);
+		
+		mainFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/drone_icon64.gif")));
 		
 		layeredPane.add(detectorController.getWindow(), "1");
 		layeredPane.add(configurationController.getWindow(), "2");

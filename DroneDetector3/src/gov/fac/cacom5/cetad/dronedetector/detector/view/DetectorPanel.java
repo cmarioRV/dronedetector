@@ -133,9 +133,12 @@ public class DetectorPanel extends JPanel {
 		verticalStrut = Box.createVerticalStrut(50);
 		panel_1.add(verticalStrut);
 		
-		cetadIcon = new ImageIcon("images/cetad.png");
-		cacomIcon = new ImageIcon("images/cacom5.png");
-		facIcon = new ImageIcon("images/fac.png");
+		//cetadIcon = new ImageIcon("images/cetad.png");
+		//cacomIcon = new ImageIcon("images/cacom5.png");
+		//facIcon = new ImageIcon("images/fac.png");
+		cetadIcon = new ImageIcon(getClass().getResource("/images/cetad.png"));
+		cacomIcon = new ImageIcon(getClass().getResource("/images/cacom5.png"));
+		facIcon = new ImageIcon(getClass().getResource("/images/fac.png"));
 		JLabel im1 = new JLabel(cetadIcon);
 		JLabel im2 = new JLabel(cacomIcon);
 		JLabel im3 = new JLabel(facIcon);
