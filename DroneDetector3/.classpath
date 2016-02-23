@@ -9,7 +9,6 @@
 			<attribute name="javadoc_location" value="jar:platform:/resource/DroneDetector3/libs/commons-math3-3.6-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="libs/sqlite-jdbc-3.8.11.2.jar"/>
 	<classpathentry kind="lib" path="libs/javax.mail-1.5.5.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:platform:/resource/DroneDetector3/libs/javax.mail-1.5.5-javadoc.jar!/"/>
@@ -17,5 +16,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="libs/jfreechart-1.0.19.jar"/>
 	<classpathentry kind="lib" path="libs/jcommon-1.0.23.jar"/>
+	<classpathentry kind="lib" path="libs/sqlite-jdbc-3.7.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
