@@ -60,11 +60,12 @@ public class Wav2TextConverter {
             	System.out.print(decodedPath);
             	
             	
-            	java.net.URL url = Wav2TextConverter.class.getProtectionDomain().getCodeSource().getLocation(); //Gets the path
+            	java.net.URL url = getClass().getProtectionDomain().getCodeSource().getLocation(); //Gets the path
               	String jarPath = null;
             		try {
             			jarPath = URLDecoder.decode(url.getFile(), "UTF-8"); //Should fix it to be read correctly by the system
             		} catch (UnsupportedEncodingException e) {
+            			System.out.print("dasfsdfasfafasdfasd");
             			e.printStackTrace();
             		}
             		
