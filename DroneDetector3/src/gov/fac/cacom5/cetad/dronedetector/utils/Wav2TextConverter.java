@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.net.URLDecoder;
 import java.util.Vector;
 
 /**
@@ -48,12 +49,12 @@ public class Wav2TextConverter {
             
             
             System.out.print("\n\n\n\n\n\n");
-            try {
-				System.out.print(getClass().getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
-			} catch (URISyntaxException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+
+            	String path = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+            	String decodedPath = URLDecoder.decode(path, "UTF-8");
+            	//System.out.print(getClass().getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
+            	System.out.print(decodedPath);
+
             System.out.print("\n\n\n\n\n\n");
             
             
