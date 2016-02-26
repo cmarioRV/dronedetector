@@ -182,7 +182,7 @@ public class ConfigurationPanel extends JPanel {
 				
 				txtThreshold = new JTextField();
 				txtThreshold.setHorizontalAlignment(SwingConstants.CENTER);
-				txtThreshold.setText("0.62");
+				txtThreshold.setText("0.50");
 				verticalBox_1.add(txtThreshold);
 				txtThreshold.setColumns(10);
 				
