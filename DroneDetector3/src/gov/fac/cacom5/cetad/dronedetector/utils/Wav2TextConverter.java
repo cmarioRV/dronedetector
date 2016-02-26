@@ -72,6 +72,7 @@ public class Wav2TextConverter {
             	
             		System.out.print("22222222222dasfsdfasfafasdfasd");
                 String parentPath = new File(jarPath).getParentFile().getPath(); //Path of the jar
+                System.out.print("3333333333dasfsdfasfafasdfasd");
             		parentPath = parentPath + File.separator;
                 
                 System.out.println("Path: " + parentPath);
