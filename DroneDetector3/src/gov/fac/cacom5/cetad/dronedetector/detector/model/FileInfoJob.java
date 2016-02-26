@@ -47,9 +47,7 @@ public class FileInfoJob implements Callable<double[]> {
 	public double[] call() throws Exception {
 		this.wav2TextConverter.convert();
 		initialize(parameters);
-		System.out.print("Antesssssssssssssssss");
 		readSamples("resources/outputWav2Text.txt");
-		System.out.print("Despuessssssssss");
 		process(((s.size()-N)/M)+1);
 		bfwr.close();
 		calculateAverage();
