@@ -64,11 +64,13 @@ public class Wav2TextConverter {
               	String jarPath = null;
             		try {
             			jarPath = URLDecoder.decode(url.getFile(), "UTF-8"); //Should fix it to be read correctly by the system
+            			System.out.print("11111111111dasfsdfasfafasdfasd");
             		} catch (UnsupportedEncodingException e) {
             			System.out.print("dasfsdfasfafasdfasd");
             			e.printStackTrace();
             		}
-            		
+            	
+            		System.out.print("22222222222dasfsdfasfafasdfasd");
                 String parentPath = new File(jarPath).getParentFile().getPath(); //Path of the jar
             		parentPath = parentPath + File.separator;
                 
