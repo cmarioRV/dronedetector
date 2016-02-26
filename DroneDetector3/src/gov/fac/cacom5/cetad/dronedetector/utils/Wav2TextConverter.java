@@ -58,31 +58,13 @@ public class Wav2TextConverter {
             	String decodedPath = URLDecoder.decode(path, "UTF-8");
             	//System.out.print(getClass().getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
             	System.out.print(decodedPath);
-            	
-            	
-            	java.net.URL url = getClass().getProtectionDomain().getCodeSource().getLocation(); //Gets the path
-              	String jarPath = null;
-            		try {
-            			jarPath = URLDecoder.decode(url.getFile(), "UTF-8"); //Should fix it to be read correctly by the system
-            			System.out.print("11111111111dasfsdfasfafasdfasd");
-            		} catch (UnsupportedEncodingException e) {
-            			System.out.print("dasfsdfasfafasdfasd");
-            			e.printStackTrace();
-            		}
-            	
-            		System.out.print("22222222222dasfsdfasfafasdfasd");
-                String parentPath = new File(jarPath).getParentFile().getPath(); //Path of the jar
-                System.out.print("3333333333dasfsdfasfafasdfasd");
-            		parentPath = parentPath + File.separator;
-                
-                System.out.println("Path: " + parentPath);
 
             System.out.print("\n\n\n\n\n\n");
             
             
             
             
-            bfwrite = new BufferedWriter(new FileWriter(getClass().getResource("/resources/outputWav2Text.txt").getPath()));
+            bfwrite = new BufferedWriter(new FileWriter(getClass().getResource("/outputWav2Text.txt").getPath()));
             System.out.print("Despuessssssssssssss");
             //System.out.println(input.replaceFirst(".wav", ".lab"));
             bfmark = new BufferedWriter(new FileWriter("resources/mark.dat"));
