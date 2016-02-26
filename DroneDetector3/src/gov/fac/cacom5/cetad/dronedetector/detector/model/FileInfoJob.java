@@ -47,7 +47,8 @@ public class FileInfoJob implements Callable<double[]> {
 	public double[] call() throws Exception {
 		this.wav2TextConverter.convert();
 		initialize(parameters);
-		readSamples("resources/outputWav2Text.txt");
+		//readSamples("resources/outputWav2Text.txt");
+		readSamples("/outputWav2Text.txt");
 		process(((s.size()-N)/M)+1);
 		bfwr.close();
 		calculateAverage();
@@ -94,8 +95,9 @@ public class FileInfoJob implements Callable<double[]> {
      * @throws java.io.FileNotFoundException
      * @throws java.io.IOException
      */
-    private void readSamples(String filename) throws FileNotFoundException, IOException{
-        BufferedReader bfr = new BufferedReader(new FileReader(filename));
+    private void readSamples(String filename) throws FileNotFoundException, IOException{    	
+        //BufferedReader bfr = new BufferedReader(new FileReader(filename));
+    	BufferedReader bfr = new BufferedReader(new FileReader(getClass().getResource(filename).getPath()));
         String temp;
         while(bfr.ready()){
             temp = bfr.readLine();
