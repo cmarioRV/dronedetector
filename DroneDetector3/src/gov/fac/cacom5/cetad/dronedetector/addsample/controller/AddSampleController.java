@@ -152,7 +152,6 @@ public class AddSampleController extends Observable implements Observer {
 					FileInfo fileInfo = mainController.getFileInfo(fileChooser.getSelectedFile());
 					System.out.print(fileChooser.getSelectedFile().getPath());
 					newSampleCoefficients = fileInfo.getCoefficients();
-					System.out.print(newSampleCoefficients);
 					addSamplePanel.setData(fileInfo.getAudioFormat(), fileInfo.getCoefficients(), fileInfo.getName());
 				} catch (UnsupportedAudioFileException e1) {
 					e1.printStackTrace();
