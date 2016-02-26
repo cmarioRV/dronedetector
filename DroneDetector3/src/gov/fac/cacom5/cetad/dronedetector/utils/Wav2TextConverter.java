@@ -67,7 +67,7 @@ public class Wav2TextConverter {
             bfwrite = new BufferedWriter(new FileWriter(getClass().getResource("/outputWav2Text.txt").getPath()));
             System.out.print("Despuessssssssssssss");
             //System.out.println(input.replaceFirst(".wav", ".lab"));
-            bfmark = new BufferedWriter(new FileWriter("resources/mark.dat"));
+            bfmark = new BufferedWriter(new FileWriter(getClass().getResource("/mark.dat").getPath()));
             
             buffer = new byte[2];
             x = new Vector();
