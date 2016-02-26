@@ -40,6 +40,7 @@ public class Wav2TextConverter {
      */
     public Wav2TextConverter(String input, String output) throws IOException{
         try {
+        	System.out.print("Antesssssssssssssssss");
             bfread = new BufferedInputStream(new FileInputStream(input));
             bfwrite = new BufferedWriter(new FileWriter(output));
             //System.out.println(input.replaceFirst(".wav", ".lab"));
