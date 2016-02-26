@@ -47,7 +47,7 @@ public class Wav2TextConverter {
             
             
             System.out.print("\n\n\n\n\n\n");
-            System.out.print(getClass().getResource("/resources/outputWav2Text.txt").toString());
+            System.out.print(getClass().getResource("/resources/outputWav2Text.txt").getPath());
             System.out.print("\n\n\n\n\n\n");
             
             
