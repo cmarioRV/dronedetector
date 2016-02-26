@@ -149,6 +149,8 @@ public class MainController {
 		mainFrame.setJMenuBar(menuBar);
 		
 		mainFrame.setVisible(true);
+		
+		detectorController.autostart();
 	}
 
 	public void hidePanel(int panelNumber)

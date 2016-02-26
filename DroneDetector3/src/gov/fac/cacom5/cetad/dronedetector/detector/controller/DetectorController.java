@@ -76,6 +76,11 @@ public class DetectorController implements Observer {
 		return detectorPanel;
 	}
 	
+	public void autostart()
+	{
+		startDetection();
+	}
+	
 	public void startDetection()
 	{
 		startDetectorAction.setEnabled(false);

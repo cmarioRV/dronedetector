@@ -58,6 +58,7 @@ public class CalculationController {
 	
 	public double[] getFileCoefficients(File file, LPCParameters parameters) throws IOException, InterruptedException, ExecutionException
 	{
+		/*
 		if(!executor.isShutdown()) 
 		{
 			Future<double[]> result = executor.submit(new FileInfoJob(file, parameters));
@@ -67,6 +68,27 @@ public class CalculationController {
 			return result.get();
 		}
 		return null;
+		*/
+		
+		//// Se modificó por este otro sketch
+		if(!executor.isShutdown()) 
+		{
+			Future<double[]> result = executor.submit(new FileInfoJob(file, parameters));
+			
+			//for (double iterable_element : result.get()) System.out.print(String.format("%f ", iterable_element));
+			
+			return result.get();
+		}
+		else
+		{
+			executor  = (ThreadPoolExecutor) Executors.newFixedThreadPool(5);
+			
+			Future<double[]> result = executor.submit(new FileInfoJob(file, parameters));
+			
+			//for (double iterable_element : result.get()) System.out.print(String.format("%f ", iterable_element));
+			
+			return result.get();
+		}
 	}
 	
 	public void newMatch(String droneName)

@@ -190,7 +190,7 @@ public class ConfigurationPanel extends JPanel {
 				verticalBox_1.add(verticalStrut_9);
 				
 				txtMatchNumber = new JTextField();
-				txtMatchNumber.setText("3");
+				txtMatchNumber.setText("4");
 				txtMatchNumber.setHorizontalAlignment(SwingConstants.CENTER);
 				txtMatchNumber.setColumns(10);
 				verticalBox_1.add(txtMatchNumber);
