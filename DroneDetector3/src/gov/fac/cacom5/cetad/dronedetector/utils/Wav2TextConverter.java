@@ -47,13 +47,13 @@ public class Wav2TextConverter {
             
             
             System.out.print("\n\n\n\n\n\n");
-            System.out.print(getClass().getResource("/resources/outputWav2Text.txt").getPath());
+            System.out.print(getClass().getResource("/resources/outputWav2Text.txt"));
             System.out.print("\n\n\n\n\n\n");
             
             
             
             
-            bfwrite = new BufferedWriter(new FileWriter(getClass().getResource("outputWav2Text.txt").getPath()));
+            bfwrite = new BufferedWriter(new FileWriter(getClass().getResource("/resources/outputWav2Text.txt").getPath()));
             System.out.print("Despuessssssssssssss");
             //System.out.println(input.replaceFirst(".wav", ".lab"));
             bfmark = new BufferedWriter(new FileWriter("resources/mark.dat"));
