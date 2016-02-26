@@ -285,12 +285,12 @@ public class ConfigurationPanel extends JPanel {
 
 	public String getInput()
 	{
-		return "resources/input.txt";
+		return "/input.txt";
 	}
 	
 	public String getOutput()
 	{
-		return "resources/output.txt";
+		return "/output.txt";
 	}	
 	
 	public String getEmail()
