@@ -77,6 +77,8 @@ public class ConfigurationController {
 			configurationParameters.setOutput(configurationPanel.getOutput());
 			configurationParameters.setEmail(configurationPanel.getEmail());
 			configurationParameters.setThreshold(configurationPanel.getThreshold());
+			configurationParameters.setOffset(configurationPanel.getOffset());
+			configurationParameters.setMatchNumber(configurationPanel.getMatchNumber());
 			mainController.hidePanel(2);
 		}
 	}

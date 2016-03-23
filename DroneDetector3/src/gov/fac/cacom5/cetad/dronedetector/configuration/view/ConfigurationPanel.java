@@ -96,7 +96,7 @@ public class ConfigurationPanel extends JPanel {
 		Component verticalStrut = Box.createVerticalStrut(9);
 		verticalBox.add(verticalStrut);
 		
-		JLabel lblNewLabel_1 = new JLabel("Descartar primeros Coefficientes");
+		JLabel lblNewLabel_1 = new JLabel("Tomar primeros coeficientes");
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setAlignmentX(Component.CENTER_ALIGNMENT);
 		verticalBox.add(lblNewLabel_1);
@@ -155,7 +155,7 @@ public class ConfigurationPanel extends JPanel {
 		
 		txtSkipUntilCoeff = new JTextField();
 		txtSkipUntilCoeff.setHorizontalAlignment(SwingConstants.CENTER);
-		txtSkipUntilCoeff.setText("12");
+		txtSkipUntilCoeff.setText("5");
 		verticalBox_1.add(txtSkipUntilCoeff);
 		txtSkipUntilCoeff.setColumns(10);
 		

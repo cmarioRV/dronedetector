@@ -6,12 +6,17 @@ import java.util.Observable;
 import java.util.Vector;
 import java.util.concurrent.Semaphore;
 
+import org.apache.commons.math3.stat.correlation.Covariance;
+import org.apache.commons.math3.stat.descriptive.moment.StandardDeviation;
+
 public class CalculationQueue extends Observable
 {    	
 	private final Semaphore semaphore;
 	Hashtable<String, double[]> dronesArrayH;
 	private Hashtable<String, Vector<Double>> correlationsH;
 	private int offset = 0;
+	//private int offset = 5;
+	Covariance covariance = new Covariance();
 	
 	public CalculationQueue(Hashtable<String, double[]> dronesArray, int pOffset) {
 		this.semaphore = new Semaphore(1); 
@@ -45,14 +50,14 @@ public class CalculationQueue extends Observable
 		double x_pow = 0;
 		double y_pow = 0;
 		double xdoty = 0;
-		double[] rtData = Arrays.copyOfRange(rtDataComplete, offset, rtDataComplete.length);
-		//double[] rtData = Arrays.copyOfRange(rtDataComplete, 0, (rtDataComplete.length >= offset) ? offset : rtDataComplete.length);
+		//double[] rtData = Arrays.copyOfRange(rtDataComplete, offset, rtDataComplete.length);
+		double[] rtData = Arrays.copyOfRange(rtDataComplete, 0, (rtDataComplete.length >= offset) ? offset : rtDataComplete.length);
 
 		//for (int j = 0; j < dronesArrayH.values().size(); j++)
 		for (String key : dronesArrayH.keySet())
 		{
-			double[] sampleStored = Arrays.copyOfRange(dronesArrayH.get(key), offset, dronesArrayH.get(key).length);
-			//double[] sampleStored = Arrays.copyOfRange(dronesArrayH.get(key), 0, (dronesArrayH.get(key).length >= offset) ? offset : dronesArrayH.get(key).length);
+			//double[] sampleStored = Arrays.copyOfRange(dronesArrayH.get(key), offset, dronesArrayH.get(key).length);
+			double[] sampleStored = Arrays.copyOfRange(dronesArrayH.get(key), 0, (dronesArrayH.get(key).length >= offset) ? offset : dronesArrayH.get(key).length);
 			
 			if(sampleStored.length <= rtData.length)
 			{
@@ -68,13 +73,13 @@ public class CalculationQueue extends Observable
 				int n = sampleStored.length;
 
 				result = ((n * xdoty) - (x * y)) / (Math.sqrt((n * x_pow) - Math.pow(x, 2)) * Math.sqrt((n * y_pow) - Math.pow(y, 2)));
-				/*
+				
 				result = covariance.covariance(sampleStored, rtData);
 				StandardDeviation standardDeviation = new StandardDeviation();
 				double st1 = standardDeviation.evaluate(sampleStored);
 				double st2 = standardDeviation.evaluate(rtData);
 				result = result / (st1 * st2);
-				*/
+				
 			}
 			else
 			{	
