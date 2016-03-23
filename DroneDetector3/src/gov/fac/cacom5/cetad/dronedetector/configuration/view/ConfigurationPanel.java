@@ -155,7 +155,7 @@ public class ConfigurationPanel extends JPanel {
 		
 		txtSkipUntilCoeff = new JTextField();
 		txtSkipUntilCoeff.setHorizontalAlignment(SwingConstants.CENTER);
-		txtSkipUntilCoeff.setText("5");
+		txtSkipUntilCoeff.setText("12");
 		verticalBox_1.add(txtSkipUntilCoeff);
 		txtSkipUntilCoeff.setColumns(10);
 		
@@ -182,7 +182,7 @@ public class ConfigurationPanel extends JPanel {
 				
 				txtThreshold = new JTextField();
 				txtThreshold.setHorizontalAlignment(SwingConstants.CENTER);
-				txtThreshold.setText("0.50");
+				txtThreshold.setText("0.95");
 				verticalBox_1.add(txtThreshold);
 				txtThreshold.setColumns(10);
 				

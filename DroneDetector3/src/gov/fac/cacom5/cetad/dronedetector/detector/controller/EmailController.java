@@ -86,7 +86,7 @@ public class EmailController {
 			Date now = new Date();
 			String message = "Un posible drone fue detectado el " + sdf.format(now) + "\n\n" + "Del tipo:" + "\n" + drone + 
 					"\n\n\n\n\n" + "DroneDetector\n" + "Fuerza Aérea Colombiana\n" + "CACOM5\n" + "CETAD\n" + "cetad@cetad.co";
-			EmailSender.send("crua@cetad.co", emailArray, "CETAd2012*", "Posible Drone detectado!", message);
+			//EmailSender.send("crua@cetad.co", emailArray, "CETAd2012*", "Posible Drone detectado!", message);
 		}
 	}
 }

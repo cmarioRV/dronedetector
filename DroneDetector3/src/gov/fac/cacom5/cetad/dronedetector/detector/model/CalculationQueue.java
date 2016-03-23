@@ -46,12 +46,13 @@ public class CalculationQueue extends Observable
 		double y_pow = 0;
 		double xdoty = 0;
 		double[] rtData = Arrays.copyOfRange(rtDataComplete, offset, rtDataComplete.length);
+		//double[] rtData = Arrays.copyOfRange(rtDataComplete, 0, (rtDataComplete.length >= offset) ? offset : rtDataComplete.length);
 
 		//for (int j = 0; j < dronesArrayH.values().size(); j++)
 		for (String key : dronesArrayH.keySet())
 		{
-			//double[] sampleStored = dronesArrayH.get(key);
 			double[] sampleStored = Arrays.copyOfRange(dronesArrayH.get(key), offset, dronesArrayH.get(key).length);
+			//double[] sampleStored = Arrays.copyOfRange(dronesArrayH.get(key), 0, (dronesArrayH.get(key).length >= offset) ? offset : dronesArrayH.get(key).length);
 			
 			if(sampleStored.length <= rtData.length)
 			{
